@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Jkein - Jukka Keinänen - Blog</title>	
+</head>	
+<body>
+	
+	<div>
+		{% for i in cats %}
+		
+	<a href="category/{{ i.name_slug }}/">{{ i.name }}</a>
+		
+		{% endfor %}
+		
+	</div>
+	
+	{% for k in articlesall.object_list %}
+	
+	<div>	
+		
+	<p> <a href="{{ k.slug }}">{{ k.title }}</a> - {{ k.published }} - {{ k.writer }} - {{ k.cat }} </p>
+		
+		<p> {{ k.text|linebreaks }}</p>
+		
+		
+	</div>
+	
+	{% endfor %}
+	
+	 <!-- Next/Prev page links  -->
+        {% if articlesall.object_list and articlesall.paginator.num_pages > 1 %}
+        <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+            <span class="step-links">
+                {% if articlesall.has_previous %}
+                    <a href= "?page={{ articlesall.previous_page_number }}">newer entries &lt;&lt; </a>
+                {% endif %}
+
+                <span class="current">
+                    &nbsp;Page {{ articlesall.number }} of {{ articlesall.paginator.num_pages }}
+                </span>
+
+                {% if articlesall.has_next %}
+                    <a href="?page={{ articlesall.next_page_number }}"> &gt;&gt; older entries</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

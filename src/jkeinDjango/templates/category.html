@@ -1,0 +1,22 @@
+<html>
+<head>
+<title> Jkein - Blog - Posts in {{ category.name }} category</title>
+</head>
+<body>
+	
+<p> Posts in {{ category.name}} category:</p>
+
+{% for hjk in category_news_items %}
+
+<p>{{ hjk.title }}</p>
+
+<p>{{ hjk.writer }}</p>
+
+<p>{{ hjk.published }}</p>
+
+<p>{{ hjk.text|linebreaks }}</p>
+
+{% endfor %}
+
+</body>	
+</html>
